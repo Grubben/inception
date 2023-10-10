@@ -9,4 +9,4 @@ services:
     ports:
       - 80:80
     volumes:
-      - ~/myInception/nginx-html:/usr/share/nginx/html
+      -./nginx/nginx-html/:/usr/share/nginx/html

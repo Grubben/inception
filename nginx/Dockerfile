@@ -1,5 +1,7 @@
 FROM alpine
 
-RUN apk upgrade && apk add --no-cache nginx
+RUN apk update && apk upgrade && apk add --no-cache nginx
 
-CMD ["nginx", "-g", "daemon-off;"]
+#EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]

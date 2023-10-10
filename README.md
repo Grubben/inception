@@ -1,5 +1,8 @@
 # Knowledge gained for the Inception Project
 
+## Setting up the VM
+apt install -y sudo ufw docker docker-compose make openbox xinit kitty firefox-esr
+
 ## docker
 ```
 docker run nginx
@@ -17,7 +20,7 @@ docker ps -a
 docker rm 123123asdf3
 docker rm my-nginx
 docker rm -f my-nginx
-docker rm -f (docker ps -a)
+docker rm -f (docker ps -aq)
 ```
 
 ```
@@ -46,21 +49,7 @@ services:
 ```
 
 > File structure:
-```
-.:
-docker-compose.yml  Makefile  nginx
-
-./nginx:
-nginxDockerfile  nginx-html
-
-./nginx/nginx-html:
-about.html  index.html
-
-```
+> > Now in this repo
 
 Since we can't use the nginx image, we will now create our own
-```
-FROM alpine
-RUN apk upgrade && apk add --no-cache nginx
-CMD ["nginx", "-g", "daemon-off;"]
-```
+> nginx/Dockerfile
