@@ -1,0 +1,12 @@
+services:
+  nginx:
+    # image: nginx
+    build: ./nginx
+    # build:
+    #   context: ./nginx/
+    #   dockerfile: Dockerfile
+
+    ports:
+      - 80:80
+    volumes:
+      - ~/myInception/nginx-html:/usr/share/nginx/html
