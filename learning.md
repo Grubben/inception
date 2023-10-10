@@ -44,3 +44,23 @@ services:
       - ~/myInception/nginx-html:/usr/share/nginx/html
 
 ```
+
+> File structure:
+```
+.:
+docker-compose.yml  Makefile  nginx
+
+./nginx:
+nginxDockerfile  nginx-html
+
+./nginx/nginx-html:
+about.html  index.html
+
+```
+
+Since we can't use the nginx image, we will now create our own
+```
+FROM alpine
+RUN apk upgrade && apk add --no-cache nginx
+CMD ["nginx", "-g", "daemon-off;"]
+```
