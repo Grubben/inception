@@ -62,3 +62,6 @@ In nginx/
 ```
 mkcert amaria-d.42.fr
 ```
+
+Once again, I'm having port problems, so we'll forward port 4330 on host to 443 on guest
+We also have to open the port in the docker-compose
