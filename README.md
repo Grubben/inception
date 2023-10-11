@@ -2,7 +2,7 @@
 
 ## Setting up the VM
 apt install -y sudo ufw docker docker-compose make openbox xinit kitty firefox-esr
-
+apt install -y mkcert
 ## docker
 ```
 docker run nginx
@@ -53,3 +53,12 @@ services:
 
 Since we can't use the nginx image, we will now create our own
 > nginx/Dockerfile
+
+## https
+To make our server be http-secure we have to add ssl certificates
+
+### Certificates
+In nginx/
+```
+mkcert amaria-d.42.fr
+```
