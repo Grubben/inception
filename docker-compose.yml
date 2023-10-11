@@ -9,4 +9,7 @@ services:
     ports:
       - 80:80
     volumes:
-      -./nginx/nginx-html/:/usr/share/nginx/html
+      # nginx configuration
+      - ./nginx/:/etc/nginx
+      # Where the files are stored
+      - ./nginx/nginx-html/:/var/www/
