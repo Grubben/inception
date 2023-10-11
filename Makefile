@@ -4,3 +4,6 @@ all	: down
 
 down:
 		docker-compose down
+
+list:
+		docker-compose list
