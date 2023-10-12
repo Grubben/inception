@@ -6,4 +6,4 @@ down:
 		docker-compose down
 
 list:
-		docker-compose list
+		docker-compose ps

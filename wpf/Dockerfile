@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk update && apk upgrade && apk add --no-cache nginx
+RUN apk update && apk upgrade && apk add --no-cache curl php-fpm
 
 #EXPOSE 443
 

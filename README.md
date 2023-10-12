@@ -20,7 +20,7 @@ docker ps -a
 docker rm 123123asdf3
 docker rm my-nginx
 docker rm -f my-nginx
-docker rm -f (docker ps -aq)
+docker rm -f $(docker ps -aq)
 ```
 
 ```

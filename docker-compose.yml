@@ -15,3 +15,7 @@ services:
       - ./nginx/:/etc/nginx
       # Where the files are stored
       - ./nginx/nginx-html/:/var/www/
+  
+  # wordpress + php-fpm
+  # wpf:
+  #   build: ./wpf
