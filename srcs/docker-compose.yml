@@ -14,7 +14,7 @@ services:
       # nginx configuration
       - ./requirements/nginx/nginx.conf:/etc/nginx/nginx.conf
       # Where the files are stored
-      - ./requirements/nginx/nginx-html/:/var/www/
+      - ./requirements/tools/website/:/var/www/
     
     depends_on:
       - wordpress
@@ -26,4 +26,4 @@ services:
     # ports:
     #   - 9000:9000
     volumes:
-      - ./requirements/nginx/nginx-html/:/var/www/
+      - ./requirements/tools/website/:/var/www/
