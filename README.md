@@ -85,3 +85,8 @@ We also have to open the port in the docker-compose
 ## wordpress
 gonna have to change nginx config
 [https://stackoverflow.com/questions/44706951/nginx-to-serve-php-files-from-a-different-server]
+
+### internal docker networking
+check out [https://docs.docker.com/compose/networking/]
+
+It seems pretty simple actually
