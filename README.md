@@ -7,6 +7,7 @@ apt install -y mkcert
 ## Vbox - Shared folders
 To not always be copying or git push-pulling back and forth I've made a vbox shared folder
 > [https://wiki.debian.org/VirtualBox]
+
 Removed auto-mount
 To mount:
 ```
@@ -67,10 +68,12 @@ services:
 Since we can't use the nginx image, we will now create our own
 > nginx/Dockerfile
 
-## https
+## nginx
+
+### https
 To make our server be http-secure we have to add ssl certificates
 
-### Certificates
+#### Certificates
 In nginx/
 ```
 mkcert amaria-d.42.fr
@@ -78,3 +81,7 @@ mkcert amaria-d.42.fr
 
 Once again, I'm having port problems, so we'll forward port 4330 on host to 443 on guest
 We also have to open the port in the docker-compose
+
+## wordpress
+gonna have to change nginx config
+[https://stackoverflow.com/questions/44706951/nginx-to-serve-php-files-from-a-different-server]
