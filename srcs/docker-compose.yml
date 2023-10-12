@@ -12,10 +12,11 @@ services:
 
     volumes:
       # nginx configuration
-      - ./requirements/nginx/:/etc/nginx
+      - ./requirements/nginx/nginx.conf:/etc/nginx/nginx.conf
       # Where the files are stored
       - ./requirements/nginx/nginx-html/:/var/www/
   
   # wordpress + php-fpm
-  # wpf:
+  # wordpress:
+  #   image: php:7-fpm
   #   build: ./wpf
