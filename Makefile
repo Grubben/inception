@@ -6,8 +6,14 @@ all	: down
 	$(dockCompose) build
 	$(dockCompose) up -d
 
+up:	down
+	$(dockCompose) build
+	$(dockCompose) up
+
 down:
 		$(dockCompose) down 
 
-list:
+ls:
 		$(dockCompose) ps -a
+
+list:	ls
