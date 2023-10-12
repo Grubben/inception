@@ -82,11 +82,25 @@ mkcert amaria-d.42.fr
 Once again, I'm having port problems, so we'll forward port 4330 on host to 443 on guest
 We also have to open the port in the docker-compose
 
-## wordpress
+## wordpress + php-pfm
+### php-pfm
 gonna have to change nginx config
 [https://stackoverflow.com/questions/44706951/nginx-to-serve-php-files-from-a-different-server]
 
-### internal docker networking
+### wordpress
+
+For the dependencies
+[https://ubuntu.com/tutorials/install-and-configure-wordpress#2-install-dependencies]
+
+The install
+[https://medium.com/employbl/create-a-wordpress-site-from-the-command-line-and-run-it-locally-13db3f996519]
+
+
+## internal docker networking
 check out [https://docs.docker.com/compose/networking/]
 
 It seems pretty simple actually
+
+## Env
+Found this [https://docs.docker.com/compose/compose-file/05-services/#env_file]
+Keeping it here to check out later
