@@ -1,0 +1,2 @@
+groupadd wordpress_user
+useradd -g wordpress_user wordpress_user

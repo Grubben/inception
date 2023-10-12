@@ -1,9 +1,13 @@
+dcdirec	= ./srcs/docker-compose.yml
+
+dockCompose = docker-compose -f $(dcdirec)
+
 all	: down
-	docker-compose build
-	docker-compose up -d
+	$(dockCompose) build
+	$(dockCompose) up -d
 
 down:
-		docker-compose down
+		$(dockCompose) down 
 
 list:
-		docker-compose ps
+		$(dockCompose) ps -a

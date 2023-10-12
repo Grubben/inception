@@ -3,6 +3,19 @@
 ## Setting up the VM
 apt install -y sudo ufw docker docker-compose make openbox xinit kitty firefox-esr
 apt install -y mkcert
+
+## Vbox - Shared folders
+To not always be copying or git push-pulling back and forth I've made a vbox shared folder
+> [https://wiki.debian.org/VirtualBox]
+Removed auto-mount
+To mount:
+```
+mkdir ~/incep
+sudo mount -t vboxsf inception ~/incep
+```
+inception is the name of the shared folder
+
+
 ## docker
 ```
 docker run nginx
