@@ -6,7 +6,7 @@ services:
     #   context: ./requirements/nginx/
     #   dockerfile: Dockerfile
     ports:
-      - 80:80
+      # - 80:80
       - 443:443
     volumes:
       #TODO: make .conf not need volume
@@ -22,12 +22,12 @@ services:
     volumes:
       - ./requirements/tools/website/:/var/www/
 
-  mariadb:
-    env_file:
-      - .env
-    # restart: always
-    # image: mariadb
-    build: ./requirements/mariadb
+  # mariadb:
+  #   env_file:
+  #     - .env
+  #   # restart: always
+  #   # image: mariadb
+  #   build: ./requirements/mariadb
 
 
 # //TODO:

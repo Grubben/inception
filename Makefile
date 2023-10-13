@@ -4,14 +4,14 @@ dockCompose = docker-compose -f $(dcdirec)
 
 all	: down
 	$(dockCompose) build
-	$(dockCompose) up --remove-orphans -d
+	$(dockCompose) up -d
 
 up:	down
 	$(dockCompose) build
 	$(dockCompose) up
 
 down:
-		$(dockCompose) down 
+		$(dockCompose) down --remove-orphans 
 
 d	: down
 
