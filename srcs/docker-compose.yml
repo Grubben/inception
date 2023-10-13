@@ -1,3 +1,4 @@
+version: '3'
 services:
   nginx:
     # image: nginx
@@ -22,12 +23,17 @@ services:
     volumes:
       - ./requirements/tools/website/:/var/www/
 
-  # mariadb:
-  #   env_file:
-  #     - .env
-  #   # restart: always
-  #   # image: mariadb
-  #   build: ./requirements/mariadb
+  mariadb:
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    restart: always
+    # image: mariadb
+    build: ./requirements/mariadb
+    volumes:
+      - ./requirements/tools/database:/var/lib/mysql
+
 
 
 # //TODO:
