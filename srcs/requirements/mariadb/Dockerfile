@@ -13,6 +13,6 @@ EXPOSE 3306
 COPY script.sh .
 RUN chmod +rwx script.sh
 
-RUN chown mysql:mysql /var/lib/mysql/
+RUN chown mysql:mysql /var/lib/mysql
 
 ENTRYPOINT [ "./script.sh" ]

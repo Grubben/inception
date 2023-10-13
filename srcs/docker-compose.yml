@@ -9,30 +9,32 @@ services:
     ports:
       # - 80:80
       - 443:443
-    volumes:
+    # volumes:
       #TODO: make .conf not need volume
       # Where the files are stored
-      - ./requirements/tools/website/:/var/www/
+      # - ./requirements/tools/website/:/var/www/
     # depends_on:
     #   - wordpress
   
   # wordpress + php-fpm
   wordpress:
-    image: php:7-fpm
-    # build: ./requirements/wordpress
-    volumes:
-      - ./requirements/tools/website/:/var/www/
-
-  mariadb:
-    env_file:
-      - .env
+    # image: php:7-fpm
+    build: ./requirements/wordpress
     ports:
-      - 3306:3306
-    restart: always
-    # image: mariadb
-    build: ./requirements/mariadb
+      - 80:80
     volumes:
-      - ./requirements/tools/database:/var/lib/mysql
+      - /home/hello/data/wordpress:/var/www/
+
+  # mariadb:
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 3306:3306
+  #   restart: always
+  #   # image: mariadb
+  #   build: ./requirements/mariadb
+  #   volumes:
+  #     - /home/hello/data/mariadb:/var/lib/mysql
 
 
 

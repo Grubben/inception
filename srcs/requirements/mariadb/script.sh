@@ -24,6 +24,6 @@ EOF
 
 fi
 
-# mysqld -u mysql
+mysqld -u mysql
 # mysqld -u root
 tail -f /dev/null

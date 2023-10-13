@@ -15,6 +15,10 @@ down:
 
 d	: down
 
+
+mariadb: down
+		docker build ./srcs/requirements/mariadb --tag mariadb
+		docker run mariadb
 ls:
 		$(dockCompose) ps -a
 
