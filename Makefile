@@ -13,6 +13,8 @@ up:	down
 down:
 		$(dockCompose) down 
 
+d	: down
+
 ls:
 		$(dockCompose) ps -a
 
