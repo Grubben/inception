@@ -1,9 +1,14 @@
 FROM alpine:3.17
 
-RUN apk update && apk upgrade && apk add --no-cache nginx
+RUN apk -U upgrade && apk add --no-cache nginx curl bash
 
-COPY amaria-d.42.fr.pem     /etc/ssl/certs/
-COPY amaria-d.42.fr-key.pem /etc/ssl/certs/
+RUN curl -JLO "https://dl.filippo.io/mkcert/latest?for=linux/amd64"
+RUN chmod +x mkcert-v*-linux-amd64
+RUN cp mkcert-v*-linux-amd64 /usr/local/bin/mkcert
+
+RUN mkcert amaria-d.42.fr
+
+RUN cp amaria-d.42.fr* /etc/ssl/certs/
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
