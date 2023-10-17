@@ -5,25 +5,25 @@ if [ ! -d "/run/mysqld" ]; then
 	chown -R mysql:mysql /run/mysqld
 fi
 
-if [ ! -d "/var/lib/mysql/$MARIADB_NAME" ]; then
+if [ ! -d "/var/lib/mysql/${MYSQL_DATABASE}" ]; then
 
 	# mysql_install_db --user=mysql --skip-test-db --basedir=/usr --datadir=/var/lib/mysql
-	# mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-	mysql_install_db --user=mysql --datadir=/var/lib/mysql
+	mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	# mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 	# mysqld -u root --bootstrap <<EOF
 	mysqld -u mysql --bootstrap <<EOF
 		flush privileges;
-		create user '$MARIADB_USER'@'%' identified by '$MARIADB_PASSWORD';
-		CREATE DATABASE IF NOT EXISTS $MARIADB_NAME;
-		grant all on $MARIADB_NAME.* to '$MARIADB_USER'@'%';
+		create user '${MYSQL_USER}'@'%' identified by '${MYSQL_PASSWORD}';
+		CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE};
+		grant all on ${MYSQL_DATABASE}.* to '${MYSQL_USER}'@'%';
 		delete from mysql.user where user='';
-		delete from mysql.user where user='root';
 		flush privileges;
 EOF
+		# delete from mysql.user where user='root';
 
 fi
 
 mysqld -u mysql
 # mysqld -u root
-tail -f /dev/null
+# tail -f /dev/null

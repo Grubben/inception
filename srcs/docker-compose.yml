@@ -10,7 +10,9 @@ services:
       # - 80:80
       - 443:443
     volumes:
-      - /home/hello/data/wordpress:/var/www/wordpress
+      - vol_wordpress:/var/www/wordpress
+    networks:
+      - inception
     depends_on:
       - wordpress
   
@@ -23,7 +25,9 @@ services:
     env_file:
       - .env
     volumes:
-      - /home/hello/data/wordpress:/var/www/wordpress
+      - vol_wordpress:/var/www/wordpress
+    networks:
+      - inception
     depends_on:
       - mariadb
 
@@ -33,13 +37,31 @@ services:
     ports:
       - 3306:3306
     restart: always
-    image: mariadb
-    # build: ./requirements/mariadb
+    # image: mariadb
+    build: ./requirements/mariadb
     volumes:
-      - /home/hello/data/mariadb:/var/lib/mysql
+      - vol_mysql:/var/lib/mysql
+    networks:
+      - inception
+
+volumes:
+  vol_wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/hello/data/wordpress
+      o: bind
+    name: vol_wordpress
+  
+  vol_mysql:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/hello/data/mysql
+      o: bind
+    name: vol_mysql
 
 
-
-# //TODO:
-# networks:
-#   - inception
+networks:
+  inception:
+    driver: bridge
