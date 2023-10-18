@@ -28,12 +28,8 @@ RUN apk -U upgrade && apk add --no-cache vim bash curl php${PHP_V} \
     php${PHP_V}-redis \
     php${PHP_V}-tokenizer \
     mariadb-client
-# RUN apk add php php-fpm
-
 
 COPY wordpress_pool.conf /etc/php${PHP_V}/php-fpm.d/www.conf
-# tell php-fpm not to daemonize
-# RUN sed -ie 's/;daemonize = yes/daemonize = no/g' /etc/php${PHP_V}/php-fpm.conf
 
 # setup user www-data
 RUN adduser -S www-data
@@ -44,7 +40,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-WORKDIR /var/www/wordpress
 
 COPY wpf.sh /
 
@@ -52,4 +47,3 @@ COPY wpf.sh /
 EXPOSE 9000
 
 ENTRYPOINT [ "sh", "/wpf.sh" ]
-# ENTRYPOINT [ "tail", "-f", "/dev/null" ]

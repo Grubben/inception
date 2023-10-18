@@ -13,6 +13,7 @@ RUN cp amaria-d.42.fr* /etc/ssl/certs/
 # /etc/nginx/nginx.conf has good configuration
 COPY nginx.conf /etc/nginx/http.d/default.conf
 
+
 RUN adduser -S www-data
 RUN sed -i -e 's/user nginx;/user  www-data;/g' /etc/nginx/nginx.conf
 

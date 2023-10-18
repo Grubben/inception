@@ -1,13 +1,8 @@
 version: '3'
 services:
   nginx:
-    # image: nginx
     build: ./requirements/nginx
-    # build:
-    #   context: ./requirements/nginx/
-    #   dockerfile: Dockerfile
     ports:
-      # - 80:80
       - 443:443
     volumes:
       - vol_wordpress:/var/www/wordpress
@@ -16,12 +11,8 @@ services:
     depends_on:
       - wordpress
   
-  # wordpress + php-fpm
   wordpress:
-    # image: php:7-fpm
     build: ./requirements/wordpress
-    # ports:
-    #   - 80:80
     env_file:
       - .env
     volumes:
@@ -34,10 +25,7 @@ services:
   mariadb:
     env_file:
       - .env
-    ports:
-      - 3306:3306
     restart: always
-    # image: mariadb
     build: ./requirements/mariadb
     volumes:
       - vol_mysql:/var/lib/mysql
@@ -60,7 +48,6 @@ volumes:
       device: /home/hello/data/mysql
       o: bind
     name: vol_mysql
-
 
 networks:
   inception:

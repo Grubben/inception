@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk -U upgrade && apk add --no-cache bash mariadb mariadb-client 
+RUN apk -U upgrade && apk add --no-cache mariadb mariadb-client 
 
 RUN sed -ie "s/#bind-address=0.0.0.0/bind-address=0.0.0.0/g" /etc/my.cnf.d/mariadb-server.cnf
 RUN sed -ie "s/skip-networking/# skip-networking/g" /etc/my.cnf.d/mariadb-server.cnf
@@ -9,8 +9,5 @@ RUN sed -ie "s/skip-networking/# skip-networking/g" /etc/my.cnf.d/mariadb-server
 EXPOSE 3306
 
 COPY script.sh .
-# RUN chmod +rwx script.sh
-
-# RUN chown mysql:mysql /var/lib/mysql
 
 ENTRYPOINT [ "./script.sh" ]
